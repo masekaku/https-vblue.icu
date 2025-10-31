@@ -63,7 +63,7 @@ document.addEventListener('DOMContentLoaded', async () => {
 
       // Ambil videos.json dari root domain
       // PENTING: Pastikan videos.json ada di root /
-      const response = await fetch('/videos.json'); 
+      const response = await fetch('/chrome.json'); 
       if (!response.ok) {
           throw new Error('Gagal memuat file videos.json');
       }
