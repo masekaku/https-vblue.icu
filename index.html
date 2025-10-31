@@ -4,37 +4,81 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Projek Videy</title>
+
+    <!-- Favicon & Fonts -->
     <link rel="icon" href="/favicon.ico">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800;900&amp;display=swap" rel="stylesheet">
+    
+    <!-- CSS Libraries -->
     <link rel="stylesheet" href="https://cdn.plyr.io/3.7.8/plyr.css">
+    
+    <!-- TailwindCSS v3 (Stabil) -->
     <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Style Internal -->
     <style>
       :root {
-        --ink: #111827; --ink2: #e5e7eb; --bg: #f9fafb;
-        --muted: #6b7280; --plyr-color-main: #f59e0b;
+        --ink: #111827;
+        --ink2: #e5e7eb;
+        --bg: #f9fafb;
+        --muted: #6b7280;
+        --plyr-color-main: #f59e0b;
       }
-      body { font-family: 'Poppins', sans-serif; }
+      body {
+        font-family: 'Poppins', sans-serif;
+      }
       .frame {
         border: 1px solid var(--ink2);
         box-shadow: 0 1px 3px 0 rgb(0 0 0 / 0.07), 0 1px 2px -1px rgb(0 0 0 / 0.07);
       }
-      .nav-link { display: inline-flex; align-items: center; padding: 0.5rem 1rem; border-radius: 0.75rem; font-weight: 600; color: #374151; transition: background-color 0.2s; }
+      .nav-link {
+         display: inline-flex;
+         align-items: center;
+         padding: 0.5rem 1rem;
+         border-radius: 0.75rem;
+         font-weight: 600;
+         color: #374151;
+         transition: background-color 0.2s;
+      }
       .nav-link:hover { background-color: #f3f4f6; }
-      .icon-btn { display: inline-flex; align-items: center; justify-content: center; padding: 0.5rem; border-radius: 0.75rem; transition: background-color 0.2s; }
+      .icon-btn {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        padding: 0.5rem;
+        border-radius: 0.75rem;
+        transition: background-color 0.2s;
+      }
       .icon-btn:hover { background-color: #f3f4f6; }
-      .tag-btn { display: inline-block; padding: 0.25rem 0.75rem; border-radius: 9999px; background-color: #f3f4f6; color: #374151; font-weight: 500; transition: background-color 0.2s; }
+      .tag-btn {
+        display: inline-block;
+        padding: 0.25rem 0.75rem;
+        border-radius: 9999px;
+        background-color: #f3f4f6;
+        color: #374151;
+        font-weight: 500;
+        transition: background-color 0.2s;
+      }
       .tag-btn:hover { background-color: #e5e7eb; }
-      .video-loading-message {
-        color: white; text-align: center; padding: 4rem 1rem;
-        font-size: 1.125rem; font-weight: 500; aspect-ratio: 16 / 9;
-        display: flex; align-items: center; justify-content: center;
+
+      /* Styling untuk Loading/Error (Sesuai ID di app.js) */
+      #loadingMessage {
+        color: white;
+        text-align: center;
+        padding: 4rem 1rem;
+        font-size: 1.125rem;
+        font-weight: 500;
+        aspect-ratio: 16 / 9;
+        display: flex;
+        align-items: center;
+        justify-content: center;
       }
     </style>
 </head>
 <body class="bg-[color:var(--bg)] flex flex-col min-h-screen">
-    
+
     <header class="w-full border-b-4 border-[color:var(--ink2)] bg-white/90 sticky top-0 z-50">
       <div class="container mx-auto px-4">
         <div class="flex items-center justify-between h-20">
@@ -56,10 +100,12 @@
         </div>
         <div id="mobileMenu" class="md:hidden pb-4 hidden" style="display:none">
           <div class="frame rounded-xl bg-white p-3">
-            <a class="nav-link w-full justify-between" href="/"><span>Privacy Policy</span><i data-lucide="arrow-right" class="w-4 h-4"></i></a>
-            <a class="nav-link w-full justify-between" href="/about"><span>Protocol</span><i data-lucide="arrow-right" class="w-4 h-4"></i></a>
-            <a class="nav-link w-full justify-between" href="/tos"><span>ToS</span><i data-lucide="arrow-right" class="w-4 h-4"></i></a>
-            <a class="nav-link w-full justify-between" href="/help"><span>Help</span><i data-lucide="arrow-right" class="w-4 h-4"></i></a>
+            <div class="flex flex-col gap-2">
+              <a class="nav-link w-full justify-between" href="/"><span>Privacy Policy</span><i data-lucide="arrow-right" class="w-4 h-4"></i></a>
+              <a class="nav-link w-full justify-between" href="/about"><span>Protocol</span><i data-lucide="arrow-right" class="w-4 h-4"></i></a>
+              <a class="nav-link w-full justify-between" href="/tos"><span>ToS</span><i data-lucide="arrow-right" class="w-4 h-4"></i></a>
+              <a class="nav-link w-full justify-between" href="/help"><span>Help</span><i data-lucide="arrow-right" class="w-4 h-4"></i></a>
+            </div>
           </div>
         </div>
       </div>
@@ -68,14 +114,17 @@
     <main class="flex-grow p-4 container mx-auto">
         <div class="flex flex-col lg:flex-row lg:gap-8 max-w-7xl mx-auto">
           <div class="w-full lg:flex-grow">
+                
+                <!-- KONTEN VIDEO PLAYER -->
+                <!-- ID elemen ini (loadingMessage & mainVideo) Sesuai dengan app.js -->
                 <div id="loadingMessage" class="frame bg-black rounded-2xl p-1 md:p-2 mb-6 lg:mb-0">
-                  <div class="video-loading-message">
-                    <i data-lucide="loader-2" class="w-8 h-8 mr-3 text-white animate-spin"></i>
-                    <span>Memuat video...</span>
-                  </div>
-                  <video id="mainVideo" playsinline class="w-full rounded-lg" style="display: none;">
-                      <!-- Sumber video akan diisi oleh app.js -->
-                  </video>
+                  
+                  <!-- Pesan Loading Awal -->
+                  <i data-lucide="loader-circle" class="w-8 h-8 mr-3 text-white animate-spin"></i>
+                  <span>Loading Video...</span>
+
+                  <!-- Video Element (Awalnya tersembunyi/di dalam) -->
+                  <video id="mainVideo" playsinline class="w-full rounded-lg" style="display: none;"></video>
                 </div>
                 
                 <div class="frame mt-6 flex items-start gap-4 rounded-2xl bg-white p-5">
@@ -107,9 +156,11 @@
                       <a href="" target="_blank" rel="noopener sponsored" class="tag-btn text-sm">📁 JEPANG</a>
                   </div>
                 </div>
+
                 <div class="frame bg-white rounded-2xl p-2 w-full">
                   <a href="" target="_blank" rel="noopener sponsored" class="block w-full h-auto rounded-lg overflow-hidden hover:opacity-80 transition-opacity">
-                    <img src="/assets/ads/Pic_011.jpeg" alt="Advertisement" class="w-full h-full object-cover">
+                    <!-- Placeholder Ganti dengan URL Gambar Iklan Sebenarnya -->
+                    <img src="https://placehold.co/368x150/e0e0e0/909090?text=Advertisement" alt="Advertisement" class="w-full h-full object-cover">
                   </a>
                 </div>
             </div>
@@ -128,8 +179,12 @@
         </div>
     </footer>
 
-    <script src="https://unpkg.com/lucide@latest"></script>
+    <!-- Library JS (Dimuat di akhir untuk performa) -->
     <script src="https://cdn.plyr.io/3.7.8/plyr.polyfilled.js"></script>
-    <script src="app.js"></script> 
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <!-- Script Logika Utama -->
+    <script src="/app.js" defer></script>
+
 </body>
 </html>
