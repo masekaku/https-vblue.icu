@@ -62,7 +62,7 @@ document.addEventListener('DOMContentLoaded', function() {
         // Jika tidak, minta video default (saya set 'random=false' agar API mengirim video pertama)
         const apiUrl = requestedVideoId 
             ? `/api/videos?videoID=${requestedVideoId}` 
-            : `/api/videos?random=false`; // Ambil video default/pertama
+            : `/api/videos?random=true`; // Ambil video default/pertama
 
         fetch(apiUrl)
             .then(handleResponse)    // 1. Ubah ke JSON
