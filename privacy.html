@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Privacy Policy - vblue.icu</title>
+
+  <link rel="icon" href="/favicon.ico">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800;900&amp;display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <style>
+    :root {
+      --ink: #111827;
+      --ink2: #e5e7eb;
+      --bg: #f9fafb;
+      --muted: #6b7280;
+      --plyr-color-main: #f59e0b;
+    }
+    body { font-family: 'Poppins', sans-serif; }
+    .frame { border: 1px solid var(--ink2); box-shadow: 0 1px 3px 0 rgb(0 0 0 / 0.07), 0 1px 2px -1px rgb(0 0 0 / 0.07); }
+    .nav-link { display: inline-flex; align-items: center; padding: 0.5rem 1rem; border-radius: 0.75rem; font-weight: 600; color: #374151; transition: background-color 0.2s; }
+    .nav-link:hover { background-color: #f3f4f6; }
+    .icon-btn { display: inline-flex; align-items: center; justify-content: center; padding: 0.5rem; border-radius: 0.75rem; transition: background-color 0.2s; }
+    .icon-btn:hover { background-color: #f3f4f6; }
+    .tag-btn { display: inline-block; padding: 0.25rem 0.75rem; border-radius: 9999px; background-color: #f3f4f6; color: #374151; font-weight: 500; transition: background-color 0.2s; }
+    .tag-btn:hover { background-color: #e5e7eb; }
+  </style>
+</head>
+<body class="bg-[color:var(--bg)] flex flex-col min-h-screen">
+
+  <header class="w-full border-b-4 border-[color:var(--ink2)] bg-white/90 sticky top-0 z-50">
+    <div class="container mx-auto px-4">
+      <div class="flex items-center justify-between h-20">
+        <a href="/" class="inline-flex items-center gap-3 frame rounded-xl px-4 py-2 bg-white">
+          <span class="w-3 h-3 rounded-full bg-red-500"></span>
+          <span class="w-3 h-3 rounded-full bg-yellow-400"></span>
+          <span class="w-3 h-3 rounded-full bg-green-500"></span>
+          <span class="ml-2 font-extrabold tracking-wide text-[color:var(--ink)] text-xl">vblue.icu</span>
+        </a>
+        <nav class="hidden md:flex items-center gap-2">
+          <a class="nav-link" href="/privacy.html">Privacy Policy</a>
+          <a class="nav-link" href="/protocol.html">Protocol</a>
+          <a class="nav-link" href="/terms.html">Terms</a>
+          <a class="nav-link" href="/help.html">Help</a>
+        </nav>
+        <button id="mobileMenuBtn" type="button" class="icon-btn md:hidden" aria-label="Open menu" aria-controls="mobileMenu" aria-expanded="false">
+          <i data-lucide="menu" class="w-6 h-6"></i>
+        </button>
+      </div>
+      <div id="mobileMenu" class="md:hidden pb-4 hidden" style="display:none">
+        <div class="frame rounded-xl bg-white p-3">
+          <div class="flex flex-col gap-2">
+            <a class="nav-link w-full justify-between" href="/privacy.html"><span>Privacy Policy</span><i data-lucide="arrow-right" class="w-4 h-4"></i></a>
+            <a class="nav-link w-full justify-between" href="/protocol.html"><span>Protocol</span><i data-lucide="arrow-right" class="w-4 h-4"></i></a>
+            <a class="nav-link w-full justify-between" href="/terms.html"><span>Terms</span><i data-lucide="arrow-right" class="w-4 h-4"></i></a>
+            <a class="nav-link w-full justify-between" href="/help.html"><span>Help</span><i data-lucide="arrow-right" class="w-4 h-4"></i></a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main class="flex-grow p-6 container mx-auto max-w-4xl">
+    <div class="frame bg-white rounded-2xl p-8">
+      <h1 class="text-2xl font-extrabold text-[color:var(--ink)] mb-4">Privacy Policy</h1>
+      <p class="text-sm text-[color:var(--muted)] mb-4">This Privacy Policy explains how vblue.icu collects, uses, and protects your information when you use our website.</p>
+      <h2 class="text-lg font-bold mt-4 mb-2">Data Collection</h2>
+      <p class="text-sm text-[color:var(--muted)] mb-2">We do not collect personally identifiable information unless you provide it voluntarily.</p>
+      <h2 class="text-lg font-bold mt-4 mb-2">Usage</h2>
+      <p class="text-sm text-[color:var(--muted)] mb-2">Anonymous usage data may be collected to improve service quality.</p>
+      <h2 class="text-lg font-bold mt-4 mb-2">Contact</h2>
+      <p class="text-sm text-[color:var(--muted)]">If you have questions, please visit the Help page.</p>
+    </div>
+  </main>
+
+  <footer class="text-center py-8 mt-10 border-t-4 border-[color:var(--ink2)] bg-[color:var(--bg)]">
+    <p class="text-[color:var(--muted)] text-sm tracking-wide font-semibold">© 2025 <span class="font-bold text-[color:var(--ink)]">vblue.icu</span></p>
+    <div class="flex justify-center gap-4 mt-3">
+      <a href="/protocol.html" class="text-gray-800 hover:underline font-bold transition duration-300 text-xs">Protocol</a>
+      <a href="/terms.html" class="text-gray-800 hover:underline font-bold transition duration-300 text-xs">Terms</a>
+      <a href="/help.html" class="text-gray-800 hover:underline font-bold transition duration-300 text-xs">Contact</a>
+    </div>
+  </footer>
+
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <script src="/app.js" defer></script>
+</body>
+</html>
