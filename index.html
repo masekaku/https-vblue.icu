@@ -4,80 +4,37 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Projek Videy</title>
-
     <link rel="icon" href="/favicon.ico">
-    
-    <!-- CSS (Dimuat di Head) -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800;900&amp;display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.plyr.io/3.7.8/plyr.css">
-    
-    <!-- Tailwind v3 (Script stabil) -->
     <script src="https://cdn.tailwindcss.com"></script>
-    
-    <!-- Style CSS Kustom Anda -->
     <style>
       :root {
-        --ink: #111827;
-        --ink2: #e5e7eb;
-        --bg: #f9fafb;
-        --muted: #6b7280;
-        --plyr-color-main: #f59e0b;
+        --ink: #111827; --ink2: #e5e7eb; --bg: #f9fafb;
+        --muted: #6b7280; --plyr-color-main: #f59e0b;
       }
-      body {
-        /* Menerapkan font Poppins */
-        font-family: 'Poppins', sans-serif;
-      }
+      body { font-family: 'Poppins', sans-serif; }
       .frame {
         border: 1px solid var(--ink2);
         box-shadow: 0 1px 3px 0 rgb(0 0 0 / 0.07), 0 1px 2px -1px rgb(0 0 0 / 0.07);
       }
-      .nav-link {
-         display: inline-flex;
-         align-items: center;
-         padding: 0.5rem 1rem;
-         border-radius: 0.75rem;
-         font-weight: 600;
-         color: #374151;
-         transition: background-color 0.2s;
-      }
+      .nav-link { display: inline-flex; align-items: center; padding: 0.5rem 1rem; border-radius: 0.75rem; font-weight: 600; color: #374151; transition: background-color 0.2s; }
       .nav-link:hover { background-color: #f3f4f6; }
-      .icon-btn {
-        display: inline-flex;
-        align-items: center;
-        justify-content: center;
-        padding: 0.5rem;
-        border-radius: 0.75rem;
-        transition: background-color 0.2s;
-      }
+      .icon-btn { display: inline-flex; align-items: center; justify-content: center; padding: 0.5rem; border-radius: 0.75rem; transition: background-color 0.2s; }
       .icon-btn:hover { background-color: #f3f4f6; }
-      .tag-btn {
-        display: inline-block;
-        padding: 0.25rem 0.75rem;
-        border-radius: 9999px;
-        background-color: #f3f4f6;
-        color: #374151;
-        font-weight: 500;
-        transition: background-color 0.2s;
-      }
+      .tag-btn { display: inline-block; padding: 0.25rem 0.75rem; border-radius: 9999px; background-color: #f3f4f6; color: #374151; font-weight: 500; transition: background-color 0.2s; }
       .tag-btn:hover { background-color: #e5e7eb; }
-      .video-error-message {
-        color: white;
-        text-align: center;
-        padding: 4rem 1rem;
-        font-size: 1.125rem;
-        font-weight: 500;
-        aspect-ratio: 16 / 9;
-        display: flex;
-        align-items: center;
-        justify-content: center;
+      .video-loading-message {
+        color: white; text-align: center; padding: 4rem 1rem;
+        font-size: 1.125rem; font-weight: 500; aspect-ratio: 16 / 9;
+        display: flex; align-items: center; justify-content: center;
       }
     </style>
 </head>
 <body class="bg-[color:var(--bg)] flex flex-col min-h-screen">
     
-    <!-- HEADER -->
     <header class="w-full border-b-4 border-[color:var(--ink2)] bg-white/90 sticky top-0 z-50">
       <div class="container mx-auto px-4">
         <div class="flex items-center justify-between h-20">
@@ -99,23 +56,24 @@
         </div>
         <div id="mobileMenu" class="md:hidden pb-4 hidden" style="display:none">
           <div class="frame rounded-xl bg-white p-3">
-            <div class="flex flex-col gap-2">
-              <a class="nav-link w-full justify-between" href="/"><span>Privacy Policy</span><i data-lucide="arrow-right" class="w-4 h-4"></i></a>
-              <a class="nav-link w-full justify-between" href="/about"><span>Protocol</span><i data-lucide="arrow-right" class="w-4 h-4"></i></a>
-              <a class="nav-link w-full justify-between" href="/tos"><span>ToS</span><i data-lucide="arrow-right" class="w-4 h-4"></i></a>
-              <a class="nav-link w-full justify-between" href="/help"><span>Help</span><i data-lucide="arrow-right" class="w-4 h-4"></i></a>
-            </div>
+            <a class="nav-link w-full justify-between" href="/"><span>Privacy Policy</span><i data-lucide="arrow-right" class="w-4 h-4"></i></a>
+            <a class="nav-link w-full justify-between" href="/about"><span>Protocol</span><i data-lucide="arrow-right" class="w-4 h-4"></i></a>
+            <a class="nav-link w-full justify-between" href="/tos"><span>ToS</span><i data-lucide="arrow-right" class="w-4 h-4"></i></a>
+            <a class="nav-link w-full justify-between" href="/help"><span>Help</span><i data-lucide="arrow-right" class="w-4 h-4"></i></a>
           </div>
         </div>
       </div>
     </header>
 
-    <!-- MAIN CONTENT -->
     <main class="flex-grow p-4 container mx-auto">
         <div class="flex flex-col lg:flex-row lg:gap-8 max-w-7xl mx-auto">
           <div class="w-full lg:flex-grow">
-                <div id="videoContainer" class="frame bg-black rounded-2xl p-1 md:p-2 mb-6 lg:mb-0">
-                  <video id="videoPlayer" playsinline class="w-full rounded-lg">
+                <div id="loadingMessage" class="frame bg-black rounded-2xl p-1 md:p-2 mb-6 lg:mb-0">
+                  <div class="video-loading-message">
+                    <i data-lucide="loader-2" class="w-8 h-8 mr-3 text-white animate-spin"></i>
+                    <span>Memuat video...</span>
+                  </div>
+                  <video id="mainVideo" playsinline class="w-full rounded-lg" style="display: none;">
                       <!-- Sumber video akan diisi oleh app.js -->
                   </video>
                 </div>
@@ -133,7 +91,6 @@
                 <br>
           </div>
           
-          <!-- SIDEBAR -->
           <aside class="w-full lg:w-96 lg:flex-shrink-0">
             <div class="flex flex-col gap-6">
                 <div class="frame bg-white rounded-2xl p-5 w-full">
@@ -160,7 +117,6 @@
         </div>
     </main>
     
-    <!-- FOOTER -->
     <footer class="text-center py-8 mt-10 border-t-4 border-[color:var(--ink2)] bg-[color:var(--bg)]">
         <p class="text-[color:var(--muted)] text-sm tracking-wide font-semibold">
             © 2025 <span class="font-bold text-[color:var(--ink)]">VIDEY</span>
@@ -172,16 +128,8 @@
         </div>
     </footer>
 
-    <!-- ===== SCRIPT JAVASCRIPT (TERBAIK DI SINI) ===== -->
-    
-    <!-- Library (Lebih cepat dimuat di akhir <body>) -->
+    <script src="https://unpkg.com/lucide@latest"></script>
     <script src="https://cdn.plyr.io/3.7.8/plyr.polyfilled.js"></script>
-    
-    <!-- Lucide (Versi CDN lebih mudah) -->
-    <script src="https://unpkg.com/lucide@latest"></script> 
-
-    <!-- Script Logika Utama Anda (WAJIB PALING AKHIR) -->
-    <script src="app.js" defer></script>
-
+    <script src="app.js"></script> 
 </body>
 </html>
