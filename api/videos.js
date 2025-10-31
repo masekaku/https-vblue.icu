@@ -1,16 +1,17 @@
 // File: api/videos.js
-// Dijalankan di server Cloudflare, BUKAN di browser
-import fs from 'fs';
-import path from 'path';
+// Menggunakan import langsung, bukan 'fs' (File System)
+import data from './video_data.json';
 
 export default async function handler(req, res) {
   try {
-    // Membaca file database dari folder 'api' yang sama
-    const filePath = path.join(__dirname, 'video_data.json');
-    const fileContents = await fs.promises.readFile(filePath, 'utf8');
-    const data = JSON.parse(fileContents);
+    // 'data' adalah file video_data.json yang sudah di-load
+    // Tidak perlu lagi 'fs.promises.readFile'
 
-    const { videoID, random } = req.query;
+    // Dapatkan parameter dari URL (format baru /api/videos?videoID=...)
+    const url = new URL(req.url, `http://${req.headers.host}`);
+    const { searchParams } = url;
+    const videoID = searchParams.get('videoID');
+    const random = searchParams.get('random');
 
     let videoToReturn = null;
 
@@ -41,7 +42,7 @@ export default async function handler(req, res) {
     res.status(200).json({ videos: [videoToReturn] });
 
   } catch (error) {
-    console.error('Error reading video data:', error);
+    console.error('Error processing video data:', error);
     res.status(500).json({ error: 'Failed to load video data' });
   }
 }
