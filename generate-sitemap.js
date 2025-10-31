@@ -1,33 +1,25 @@
+// generate-sitemap.js
 const fs = require("fs");
 const path = require("path");
 
 const baseUrl = "https://vblue.icu";
-const dataPath = path.join(__dirname, "api", "video_data.json");
+const jsonPath = path.join(__dirname, "api", "video_data.json");
+const outputPath = path.join(__dirname, "sitemap.xml");
 
-if (!fs.existsSync(dataPath)) {
-  console.error("❌ video_data.json not found:", dataPath);
-  process.exit(1);
-}
-
-const rawData = fs.readFileSync(dataPath, "utf8");
+const rawData = fs.readFileSync(jsonPath, "utf-8");
 const data = JSON.parse(rawData);
 
-if (!data.videos || !Array.isArray(data.videos)) {
-  console.error("❌ Invalid JSON format. Expected 'videos' array.");
-  process.exit(1);
-}
+const urls = data.videos.map(
+  (v) => `
+  <url>
+    <loc>${baseUrl}/f/${v.id}</loc>
+    <lastmod>${new Date().toISOString()}</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>`
+);
 
-const urls = data.videos.map((video) => {
-  return `
-    <url>
-      <loc>${baseUrl}/?videoID=${video.id}</loc>
-      <changefreq>weekly</changefreq>
-      <priority>0.8</priority>
-    </url>
-  `;
-});
-
-const sitemapContent = `<?xml version="1.0" encoding="UTF-8"?>
+const sitemap = `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>${baseUrl}</loc>
@@ -37,5 +29,5 @@ const sitemapContent = `<?xml version="1.0" encoding="UTF-8"?>
   ${urls.join("\n")}
 </urlset>`;
 
-fs.writeFileSync(path.join(__dirname, "sitemap.xml"), sitemapContent.trim());
+fs.writeFileSync(outputPath, sitemap.trim());
 console.log("✅ sitemap.xml generated successfully!");
