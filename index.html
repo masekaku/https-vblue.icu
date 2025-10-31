@@ -3,15 +3,20 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>vblue.icu</title>
+    <title>Projek Videy</title>
 
     <link rel="icon" href="/favicon.ico">
+    
+    <!-- CSS (Dimuat di Head) -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800;900&amp;display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.plyr.io/3.7.8/plyr.css">
-    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
-    <style type="text/css">* {user-select: auto !important; -webkit-user-select: auto !important;}</style>
+    
+    <!-- Tailwind v3 (Script stabil) -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Style CSS Kustom Anda -->
     <style>
       :root {
         --ink: #111827;
@@ -20,8 +25,8 @@
         --muted: #6b7280;
         --plyr-color-main: #f59e0b;
       }
-      /* FONT POPSPIN DITERAPKAN DI SINI */
       body {
+        /* Menerapkan font Poppins */
         font-family: 'Poppins', sans-serif;
       }
       .frame {
@@ -71,7 +76,8 @@
     </style>
 </head>
 <body class="bg-[color:var(--bg)] flex flex-col min-h-screen">
-
+    
+    <!-- HEADER -->
     <header class="w-full border-b-4 border-[color:var(--ink2)] bg-white/90 sticky top-0 z-50">
       <div class="container mx-auto px-4">
         <div class="flex items-center justify-between h-20">
@@ -79,7 +85,7 @@
             <span class="w-3 h-3 rounded-full bg-red-500"></span>
             <span class="w-3 h-3 rounded-full bg-yellow-400"></span>
             <span class="w-3 h-3 rounded-full bg-green-500"></span>
-            <span class="ml-2 font-extrabold tracking-wide text-[color:var(--ink)] text-xl">vblue.icu</span>
+            <span class="ml-2 font-extrabold tracking-wide text-[color:var(--ink)] text-xl">VIDEY</span>
           </a>
           <nav class="hidden md:flex items-center gap-2">
             <a class="nav-link" href="/">Privacy Policy</a>
@@ -104,14 +110,14 @@
       </div>
     </header>
 
+    <!-- MAIN CONTENT -->
     <main class="flex-grow p-4 container mx-auto">
         <div class="flex flex-col lg:flex-row lg:gap-8 max-w-7xl mx-auto">
           <div class="w-full lg:flex-grow">
                 <div id="videoContainer" class="frame bg-black rounded-2xl p-1 md:p-2 mb-6 lg:mb-0">
-                  
                   <video id="videoPlayer" playsinline class="w-full rounded-lg">
-                      </video>
-
+                      <!-- Sumber video akan diisi oleh app.js -->
+                  </video>
                 </div>
                 
                 <div class="frame mt-6 flex items-start gap-4 rounded-2xl bg-white p-5">
@@ -127,6 +133,7 @@
                 <br>
           </div>
           
+          <!-- SIDEBAR -->
           <aside class="w-full lg:w-96 lg:flex-shrink-0">
             <div class="flex flex-col gap-6">
                 <div class="frame bg-white rounded-2xl p-5 w-full">
@@ -143,7 +150,6 @@
                       <a href="" target="_blank" rel="noopener sponsored" class="tag-btn text-sm">📁 JEPANG</a>
                   </div>
                 </div>
-
                 <div class="frame bg-white rounded-2xl p-2 w-full">
                   <a href="" target="_blank" rel="noopener sponsored" class="block w-full h-auto rounded-lg overflow-hidden hover:opacity-80 transition-opacity">
                     <img src="/assets/ads/Pic_011.jpeg" alt="Advertisement" class="w-full h-full object-cover">
@@ -154,9 +160,10 @@
         </div>
     </main>
     
+    <!-- FOOTER -->
     <footer class="text-center py-8 mt-10 border-t-4 border-[color:var(--ink2)] bg-[color:var(--bg)]">
         <p class="text-[color:var(--muted)] text-sm tracking-wide font-semibold">
-            © 2025 <span class="font-bold text-[color:var(--ink)]">vblue</span>
+            © 2025 <span class="font-bold text-[color:var(--ink)]">VIDEY</span>
         </p>
         <div class="flex justify-center gap-4 mt-3">
             <a href="/about" class="text-gray-800 hover:underline font-bold transition duration-300 text-xs">Protocol</a>
@@ -165,9 +172,16 @@
         </div>
     </footer>
 
-    <script src="https://unpkg.com/lucide@latest"></script>
+    <!-- ===== SCRIPT JAVASCRIPT (TERBAIK DI SINI) ===== -->
+    
+    <!-- Library (Lebih cepat dimuat di akhir <body>) -->
     <script src="https://cdn.plyr.io/3.7.8/plyr.polyfilled.js"></script>
+    
+    <!-- Lucide (Versi CDN lebih mudah) -->
+    <script src="https://unpkg.com/lucide@latest"></script> 
 
+    <!-- Script Logika Utama Anda (WAJIB PALING AKHIR) -->
     <script src="app.js" defer></script>
+
 </body>
 </html>
