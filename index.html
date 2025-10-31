@@ -69,6 +69,39 @@
         justify-content: center;
       }
     </style>
+<script>
+const schemaData = {
+  "@context": "https://schema.org",
+  "@type": "VideoObject",
+  "name": "Featured Video",
+  "description": "Watch the latest video hosted on vblue.icu with smooth playback and minimal ads.",
+  "thumbnailUrl": [
+    "https://vblue.icu/thumbnail.webp"
+  ],
+  "uploadDate": new Date().toISOString().split('T')[0],
+  "contentUrl": "https://vblue.icu",
+  "embedUrl": "https://vblue.icu",
+  "publisher": {
+    "@type": "Organization",
+    "name": "vblue.icu",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://vblue.icu/favicon.ico",
+      "width": 32,
+      "height": 32
+    }
+  },
+  "potentialAction": {
+    "@type": "WatchAction",
+    "target": "https://vblue.icu"
+  }
+};
+
+const script = document.createElement('script');
+script.type = 'application/ld+json';
+script.textContent = JSON.stringify(schemaData, null, 2);
+document.head.appendChild(script);
+</script>
 </head>
 <body class="bg-[color:var(--bg)] flex flex-col min-h-screen">
 
