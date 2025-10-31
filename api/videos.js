@@ -24,6 +24,7 @@ export default async function handler(req, res) {
       videoToReturn = allVideos.find(v => v.id === videoID);
       if (!videoToReturn) {
         // Jika ID diminta tapi tidak ada, kirim 404
+        // Mengirim JSON error, BUKAN HTML
         return res.status(404).json({ error: 'Video not found' });
       }
     } else if (random === 'true') {
@@ -32,6 +33,7 @@ export default async function handler(req, res) {
       videoToReturn = allVideos[randomIndex];
     } else {
       // 3. Ambil video PERTAMA sebagai default jika tidak ada parameter
+      // Ini menangani ?random=false atau jika parameter kosong
       videoToReturn = allVideos[0];
     }
 
@@ -42,6 +44,7 @@ export default async function handler(req, res) {
 
   } catch (error) {
     console.error('Error processing video data:', error.message);
+    // Mengirim JSON error, BUKAN HTML
     res.status(500).json({ error: 'Failed to load video data' });
   }
 }
