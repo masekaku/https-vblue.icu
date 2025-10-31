@@ -1,0 +1,14 @@
+[
+  {
+    "id_unik_video": "vid_abc_123",
+    "url_video": "https_cdn.com/path/ke/video_satu.mp4"
+  },
+  {
+    "id_unik_video": "vid_xyz_789",
+    "url_video": "https_cdn.com/path/ke/video_lain.mp4"
+  },
+  {
+    "id_unik_video": "vid_777_qwerty",
+    "url_video": "https_cdn.com/path/ke/video_ketiga.mp4"
+  }
+]
