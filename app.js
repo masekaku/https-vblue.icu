@@ -61,15 +61,17 @@ document.addEventListener('DOMContentLoaded', async () => {
           throw new Error('Format URL tidak valid.');
       }
 
-      // Ambil videos.json dari root domain
-      // PENTING: Pastikan videos.json ada di root /
+      // Ambil chrome.json dari root domain
+      // Ini sudah benar sesuai permintaan Anda
       const response = await fetch('/chrome.json'); 
       if (!response.ok) {
           throw new Error('Gagal memuat file chrome.json');
       }
+      
+      // Muat data JSON ke variabel 'chrome'
       const chrome = await response.json();
 
-      // Cari video yang cocok
+      // Cari video yang cocok di dalam 'chrome'
       const videoData = chrome.find(v => v.id_unik_video === videoId);
 
       if (videoData) {
@@ -99,4 +101,3 @@ document.addEventListener('DOMContentLoaded', async () => {
       }
   }
 });
-
