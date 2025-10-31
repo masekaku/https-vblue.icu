@@ -65,12 +65,12 @@ document.addEventListener('DOMContentLoaded', async () => {
       // PENTING: Pastikan videos.json ada di root /
       const response = await fetch('/chrome.json'); 
       if (!response.ok) {
-          throw new Error('Gagal memuat file videos.json');
+          throw new Error('Gagal memuat file chrome.json');
       }
-      const videos = await response.json();
+      const chrome = await response.json();
 
       // Cari video yang cocok
-      const videoData = videos.find(v => v.id_unik_video === videoId);
+      const videoData = chrome.find(v => v.id_unik_video === videoId);
 
       if (videoData) {
           // Video DITEMUKAN
