@@ -1,10 +1,10 @@
 {
   "version": 2,
-  "routes": [
-    { "src": "/api/(.*)", "dest": "/api/$1.js" },
-    { "src": "/f/(.*)", "dest": "/f/$1" },
-    { "src": "/\\?videoID=(.*)", "dest": "/f/$1" },
-    { "src": "/(.*)", "dest": "/$1" }
+  "rewrites": [
+    { "source": "/api/(.*)", "destination": "/api/$1.js" },
+    { "source": "/f/(.*)", "destination": "/f/$1" },
+    { "source": "/\\?videoID=(.*)", "destination": "/f/$1" },
+    { "source": "/(.*)", "destination": "/$1" }
   ],
   "cleanUrls": true,
   "trailingSlash": false
