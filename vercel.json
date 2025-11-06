@@ -1,13 +1,7 @@
 {
   "version": 2,
-  "builds": [
-    { "src": "api/**/*.js", "use": "@vercel/node" },
-    { "src": "*.html", "use": "@vercel/static" },
-    { "src": "public/**", "use": "@vercel/static" }
-  ],
   "routes": [
     { "src": "/api/(.*)", "dest": "/api/$1.js" },
-    { "src": "/f", "dest": "/f/index.html" },
     { "src": "/f/(.*)", "dest": "/f/$1" },
     { "src": "/\\?videoID=(.*)", "dest": "/f/$1" },
     { "src": "/(.*)", "dest": "/$1" }
