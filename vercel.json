@@ -1,0 +1,11 @@
+{
+  "version": 2,
+  "routes": [
+    { "src": "/api/(.*)", "dest": "/api/$1.js" },
+    { "src": "/f/(.*)", "dest": "/f/$1" },
+    { "src": "/\\?videoID=(.*)", "dest": "/f/$1" },
+    { "src": "/(.*)", "dest": "/$1" }
+  ],
+  "cleanUrls": true,
+  "trailingSlash": false
+}
