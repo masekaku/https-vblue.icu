@@ -1,7 +1,7 @@
 {
   "name": "vblue-icu",
   "version": "1.0.0",
-  "description": "Static site for video viewer",
+  "type": "module",
   "scripts": {
     "vercel-build": "node generate-sitemap.js"
   },
