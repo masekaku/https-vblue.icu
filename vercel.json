@@ -4,6 +4,8 @@
     { "source": "/api/(.*)", "destination": "/api/$1.js" },
     { "source": "/f/(.*)", "destination": "/f/$1" },
     { "source": "/\\?videoID=(.*)", "destination": "/f/$1" },
+    { "source": "/sitemap.xml", "destination": "/public/sitemap.xml" },
+    { "source": "/robots.txt", "destination": "/public/robots.txt" },
     { "source": "/(.*)", "destination": "/$1" }
   ],
   "cleanUrls": true,
