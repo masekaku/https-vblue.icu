@@ -7,7 +7,7 @@ const __dirname = path.dirname(__filename);
 
 const baseUrl = "https://vblue.icu";
 const jsonPath = path.join(__dirname, "api", "video_data.json");
-const outputPath = path.join(__dirname, "sitemap.xml");
+const outputPath = path.join(__dirname, "public", "sitemap.xml");
 
 const rawData = fs.readFileSync(jsonPath, "utf-8");
 const data = JSON.parse(rawData);
