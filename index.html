@@ -106,37 +106,7 @@
       }
     </style>
 <script>
-const schemaData = {
-  "@context": "https://schema.org",
-  "@type": "VideoObject",
-  "name": "Featured Video",
-  "description": "Watch the latest video hosted on vblue.icu with smooth playback and minimal ads.",
-  "thumbnailUrl": [
-    "https://vblue.icu/thumbnail.webp"
-  ],
-  "uploadDate": new Date().toISOString().split('T')[0],
-  "contentUrl": "https://vblue.icu",
-  "embedUrl": "https://vblue.icu",
-  "publisher": {
-    "@type": "Organization",
-    "name": "vblue.icu",
-    "logo": {
-      "@type": "ImageObject",
-      "url": "https://vblue.icu/favicon.ico",
-      "width": 32,
-      "height": 32
-    }
-  },
-  "potentialAction": {
-    "@type": "WatchAction",
-    "target": "https://vblue.icu"
-  }
-};
-
-const script = document.createElement('script');
-script.type = 'application/ld+json';
-script.textContent = JSON.stringify(schemaData, null, 2);
-document.head.appendChild(script);
+async function addSmartVideoSchema(){try{const e=await fetch("/api/video_data.json");if(!e.ok)throw new Error("Gagal memuat video_data.json");const t=await e.json(),o=new URLSearchParams(window.location.search).get("videoID");let a;if(o)a=t.videos.find(e=>e.id===o);else{const e=Math.floor(Math.random()*t.videos.length);a=t.videos[e]}if(!a)return;const n="https://vblue.icu",r=a.id,s=`${n}/?videoID=${r}`,i="https://vblue.icu/thumbnail.webp",l=`Watch video ${r} on vblue.icu`,c=`Watch video ${r} hosted on vblue.icu with smooth playback and minimal ads.`,d={"@context":"https://schema.org","@type":"VideoObject",name:r,description:c,thumbnailUrl:[i],uploadDate:(new Date).toISOString().replace("Z","+07:00"),duration:"PT2M30S",contentUrl:s,embedUrl:`${n}/embed/${r}`,publisher:{"@type":"Organization",name:"vblue.icu",logo:{"@type":"ImageObject",url:`${n}/favicon.ico`,width:32,height:32}},potentialAction:{"@type":"WatchAction",target:[{"@type":"EntryPoint",urlTemplate:s,actionPlatform:["http://schema.org/DesktopWebPlatform","http://schema.org/MobileWebPlatform"]}]}},p=document.createElement("script");p.type="application/ld+json",p.textContent=JSON.stringify(d),document.head.appendChild(p);const m=(e,t,o)=>{let a=document.querySelector(`meta[${e}="${t}"]`);a||(a=document.createElement("meta"),a.setAttribute(e,t),document.head.appendChild(a)),a.setAttribute("content",o)};m("property","og:type","video.other"),m("property","og:title",l),m("property","og:description",c),m("property","og:image",i),m("property","og:url",s),m("name","twitter:card","player"),m("name","twitter:title",l),m("name","twitter:description",c),m("name","twitter:image",i),console.log("Schema dan meta tag aktif untuk:",r)}catch(e){console.error("Gagal memproses schema video:",e)}}addSmartVideoSchema();
 </script>
 <script type='text/javascript' src='//workplacecakefaculty.com/2b/ca/3f/2bca3ff6c6c6f1c2a38d8c928b009c62.js'></script>
 </head>
